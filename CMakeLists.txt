@@ -36,9 +36,10 @@ target_link_libraries(GAHelloWorld GAHelloWorld_lib)
 ################################
 if (test)
 	
-  if( MSVC ) # VS2012 doesn't support correctly the tuples yet
-     	    add_definitions( /D _VARIADIC_MAX=10 )
-  endif()
+  if( MSVC ) 
+    # VS2012 doesn't support correctly the tuples yet
+    add_definitions( /D _VARIADIC_MAX=10 )
+  endif( MSVC)
 
   # This adds another subdirectory, which has 'project(gtest)'.
   add_subdirectory(lib/gtest-1.7.0)

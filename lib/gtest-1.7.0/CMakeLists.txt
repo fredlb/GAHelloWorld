@@ -29,6 +29,7 @@ if (COMMAND pre_project_set_up_hermetic_build)
   pre_project_set_up_hermetic_build()
 endif()
 
+
 ########################################################################
 #
 # Project-wide settings
@@ -63,6 +64,10 @@ link_directories(${gtest_BINARY_DIR}/src)
 #
 # Defines the gtest & gtest_main libraries.  User tests should link
 # with one of them.
+if( MSVC )
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} /MD")
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MDd")
+endif( MSVC )
 
 # Google Test libraries.  We build them using more strict warnings than what
 # are used for other targets, to ensure that gtest can be compiled by a user
