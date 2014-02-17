@@ -21,8 +21,9 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 ################################
 # Normal Libraries & Executables
 ################################
-file(GLOB Library_SOURCES src/Chromosome.cpp src/Population.cpp)
-file(GLOB Library_HEADERS src/Chromosome.h src/Population.h)
+file(GLOB Library_SOURCES src/AutoInitRNG.cpp src/Chromosome.cpp 
+		src/Population.cpp)
+file(GLOB Library_HEADERS src/AutoInitRNG.h src/Chromosome.h src/Population.h)
 add_library(GAHelloWorld_lib ${Library_SOURCES} ${Library_HEADERS})
 add_executable(GAHelloWorld src/GAHelloWorld.cpp)
 # Key idea: SEPARATE OUT your main() function into its own file so it can be its
@@ -53,7 +54,8 @@ if (test)
   ##############
   # Unit Tests
   ##############
-  add_executable(runUnitTests test/GA_ChromosomeTest.cpp)
+  add_executable(runUnitTests test/GA_ChromosomeTest.cpp 
+  				test/GA_PopulationTest.cpp)
 
   # Standard linking to gtest stuff.
   target_link_libraries(runUnitTests gtest gtest_main)
